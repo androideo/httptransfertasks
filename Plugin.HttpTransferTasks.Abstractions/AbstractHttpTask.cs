@@ -28,6 +28,8 @@ namespace Plugin.HttpTransferTasks
 		}
 
 
+	    public abstract void Start();
+	    public abstract void Pause();
         public abstract void Cancel();
 
 

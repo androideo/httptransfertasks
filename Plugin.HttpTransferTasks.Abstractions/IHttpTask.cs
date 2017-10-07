@@ -24,8 +24,8 @@ namespace Plugin.HttpTransferTasks
 
         Exception Exception { get; }
 
-        //void Start(); // or resume
-        //void Pause();
+        void Start(); // or resume
+        void Pause();
         void Cancel();
     }
 }

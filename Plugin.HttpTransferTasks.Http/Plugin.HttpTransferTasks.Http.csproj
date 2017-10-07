@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plugin.HttpTransferTasks.Abstractions\Plugin.HttpTransferTasks.Abstractions.csproj" />
+  </ItemGroup>
+
+  <Import Project="..\Plugin.HttpTransferTasks.Shared\Plugin.HttpTransferTasks.Shared.projitems" Label="Shared" />
+
+</Project>

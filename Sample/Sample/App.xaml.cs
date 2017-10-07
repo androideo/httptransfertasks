@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using Acr.Notifications;
+using Plugin.Notifications;
 using Xamarin.Forms;
 using Plugin.HttpTransferTasks;
 using System.Diagnostics;

@@ -12,11 +12,11 @@ namespace Sample
     {
         public MainViewModel()
         {
-            this.NewTask = new Acr.Command(async () =>
+            this.NewTask = new Command(async () =>
                 await App.Current.MainPage.Navigation.PushAsync(new NewTaskPage())
             );
-            this.MoreInfo = new Acr.Command<HttpTaskViewModel>(x => x.MoreInfo.Execute(null));
-            this.CancelAll = new Acr.Command(CrossHttpTransfers.Current.CancelAll);
+            this.MoreInfo = new Command<HttpTaskViewModel>(x => x.MoreInfo.Execute(null));
+            this.CancelAll = new Command(CrossHttpTransfers.Current.CancelAll);
             this.Tasks = new ObservableCollection<HttpTaskViewModel>();
 
             CrossHttpTransfers.Current.CurrentTasksChanged += (sender, args) =>

@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace Sample
 {
-    public class HttpTaskViewModel : ViewModel, IViewModelLifecycle
+    public class HttpTaskViewModel : ViewModel
     {
         readonly IHttpTask task;
         IDisposable taskSub;
@@ -20,8 +20,8 @@ namespace Sample
         public HttpTaskViewModel(IHttpTask task)
         {
             this.task = task;
-            this.Cancel = new Acr.Command(task.Cancel);
-            this.MoreInfo = new Acr.Command(() =>
+            this.Cancel = new Command(task.Cancel);
+            this.MoreInfo = new Command(() =>
             {
                 if (task.Status == TaskStatus.Error)
                     UserDialogs.Instance.Alert(task.Exception.ToString(), "Error");
@@ -29,7 +29,7 @@ namespace Sample
         }
 
 
-        public void OnActivate() => this.taskSub = Observable
+        public override void OnActivate() => this.taskSub = Observable
             .Create<IHttpTask>(ob =>
             {
                 var handler = new PropertyChangedEventHandler((sender, args) => ob.OnNext(this.task));
@@ -41,8 +41,7 @@ namespace Sample
                 Device.BeginInvokeOnMainThread(() => this.OnPropertyChanged(String.Empty))
             );
 
-        public void OnDeactivate() => this.taskSub?.Dispose();
-        public bool OnBack() => true;
+        public override void OnDeactivate() => this.taskSub?.Dispose();
 
 
         public string Identifier => this.task.Identifier;
