@@ -8,12 +8,12 @@ namespace Sample
     public abstract class ViewModel : INotifyPropertyChanged
     {
 
-        protected virtual void OnActivate()
+        public virtual void OnActivate()
         {
         }
 
 
-        protected virtual void OnDeactivate()
+        public virtual void OnDeactivate()
         {
         }
 
@@ -23,5 +23,16 @@ namespace Sample
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
             => this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+
+        protected virtual bool SetProperty<T>(ref T property, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (Object.Equals(property, value))
+                return false;
+
+            property = value;
+            this.OnPropertyChanged(propertyName);
+            return true;
+        }
     }
 }

@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sample="clr-namespace:Sample;assembly=Sample"
-             xmlns:acr="clr-namespace:Acr.XamForms;assembly=Acr.XamForms"
              x:Class="Sample.MainPage"
              Title="HTTP Transfers">
 
@@ -28,7 +27,7 @@
             </Grid.RowDefinitions>
 
 
-            <acr:ListView ItemsSource="{Binding Tasks}"
+            <ListView ItemsSource="{Binding Tasks}"
                           ItemClickCommand="{Binding MoreInfo}"
                           RowHeight="130"
                           Grid.Row="0">
@@ -100,7 +99,7 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </acr:ListView>
+            </ListView>
 
             <Button Text="Cancel All Tasks"
                     Command="{Binding CancelAll}"

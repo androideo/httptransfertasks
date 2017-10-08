@@ -29,13 +29,11 @@ namespace Plugin.HttpTransferTasks
                     // TODO: need localFilePath for what WAS uploading
                     // TODO: need to set resumed status
                     this.Add(new HttpTask(this.ToTaskConfiguration(upload), upload));
-                    upload.Resume();
                 }
 
                 foreach (var download in downloads)
                 {
                     this.Add(new HttpTask(this.ToTaskConfiguration(download), download));
-                    download.Resume();
                 }
             });
         }

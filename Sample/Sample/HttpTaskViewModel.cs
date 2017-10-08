@@ -41,6 +41,7 @@ namespace Sample
                 Device.BeginInvokeOnMainThread(() => this.OnPropertyChanged(String.Empty))
             );
 
+
         public override void OnDeactivate() => this.taskSub?.Dispose();
 
 

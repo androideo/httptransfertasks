@@ -2,11 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Plugin.HttpTransferTasks</AssemblyName>
+    <RootNamespace>Plugin.HttpTransferTasks</RootNamespace>
+      <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="sqlite-net-pcl" Version="1.4.118" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Plugin.HttpTransferTasks.Abstractions\Plugin.HttpTransferTasks.Abstractions.csproj" />
   </ItemGroup>
+
+  <Import Project="..\Plugin.HttpTransferTasks.Http.Shared\Plugin.HttpTransferTasks.Http.Shared.projitems" Label="Shared" />
 
   <Import Project="..\Plugin.HttpTransferTasks.Shared\Plugin.HttpTransferTasks.Shared.projitems" Label="Shared" />
 

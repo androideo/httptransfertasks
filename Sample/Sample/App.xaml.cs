@@ -46,11 +46,11 @@ namespace Sample
         protected override void OnResume()
         {
             base.OnResume();
-            CrossNotifications.Current.Badge = 0;
+            CrossNotifications.Current.SetBadge(0);
         }
 
 
-        void OnTaskPropertyChanged(object sender, PropertyChangedEventArgs args)
+        async void OnTaskPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
             if (args.PropertyName != nameof(IHttpTask.Status))
                 return;
@@ -58,26 +58,26 @@ namespace Sample
             var task = (IHttpTask) sender;
             var type = task.IsUpload ? "Upload" : "Download";
 
-            Device.BeginInvokeOnMainThread(() =>
+            var cn = CrossNotifications.Current;
+            if (task.Status == TaskStatus.Error)
             {
-                var cn = CrossNotifications.Current;
-                if (task.Status == TaskStatus.Error)
+                Debug.WriteLine(task.Exception.ToString());
+                await cn.Send(new Notification
                 {
-                    Debug.WriteLine(task.Exception.ToString());
-                    cn.Send(
-                        NOT_TITLE,
-                        $"[ERROR] {task.Configuration.Uri} - {task.Exception}"
-                    );
-                }
-                else
+                    Title = NOT_TITLE,
+                    Message = $"[ERROR] {task.Configuration.Uri} - {task.Exception}"
+                });
+            }
+            else
+            {
+                await cn.Send(new Notification
                 {
-                    cn.Send(
-                        NOT_TITLE,
-                        $"{type} of {task.RemoteFileName} to {task.Configuration.Uri} finished with status: {task.Status}"
-                    );
-                    cn.Badge += 1;
-                }
-            });
+                    Title = NOT_TITLE,
+                    Message = $"{type} of {task.RemoteFileName} to {task.Configuration.Uri} finished with status: {task.Status}"
+                });
+                var badge = await cn.GetBadge();
+                await cn.SetBadge(badge + 1);
+            }
         }
     }
 }
