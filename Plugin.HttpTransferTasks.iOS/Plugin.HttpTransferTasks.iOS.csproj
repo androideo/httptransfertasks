@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HttpTask.cs" />
-    <Compile Include="HttpTransferTasks.cs" />
+    <Compile Include="HttpTransferTasksImpl.cs" />
     <Compile Include="IIosHttpTask.cs" />
     <Compile Include="PluginSessionDelegate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

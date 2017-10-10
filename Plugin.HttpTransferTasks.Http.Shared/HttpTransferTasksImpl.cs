@@ -14,14 +14,14 @@ using Android.OS;
 
 namespace Plugin.HttpTransferTasks
 {
-    public class HttpTransferTasks : AbstractHttpTransferTasks
+    public class HttpTransferTasksImpl : AbstractHttpTransferTasks
     {
         readonly SqliteConnection conn;
 #if __ANDROID__
         PowerManager.WakeLock wakeLock;
 #endif
 
-        public HttpTransferTasks()
+        public HttpTransferTasksImpl()
         {
             this.conn = new SqliteConnection(); // this will block for a moment
 #if __ANDROID__

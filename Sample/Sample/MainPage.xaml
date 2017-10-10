@@ -28,7 +28,6 @@
 
 
             <ListView ItemsSource="{Binding Tasks}"
-                          ItemClickCommand="{Binding MoreInfo}"
                           RowHeight="130"
                           Grid.Row="0">
                 <ListView.ItemTemplate>

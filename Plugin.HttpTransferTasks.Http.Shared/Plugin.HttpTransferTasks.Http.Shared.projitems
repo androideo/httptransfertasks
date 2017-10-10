@@ -10,7 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)HttpTask.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HttpTransferTasks.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HttpTransferTasksImpl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SqlTaskConfiguration.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SqlTaskConfigurationHeader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ProgressStreamContent.cs" />

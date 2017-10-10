@@ -109,7 +109,7 @@
     <Compile Include="AbstractUwpHttpTask.cs" />
     <Compile Include="DownloadHttpTask.cs" />
     <Compile Include="UploadHttpTask.cs" />
-    <Compile Include="HttpTransferTasks.cs" />
+    <Compile Include="HttpTransferTasksImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Plugin.HttpTransferTasks.rd.xml" />
   </ItemGroup>

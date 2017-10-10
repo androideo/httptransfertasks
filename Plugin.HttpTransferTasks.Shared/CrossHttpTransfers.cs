@@ -15,7 +15,7 @@ namespace Plugin.HttpTransferTasks
                 if (current == null)
                     throw new ArgumentException("[Plugin.HttpTransferTasks] No platform plugin found.  Did you install the nuget package in your app project as well?");
 #else
-                current = current ?? new HttpTransferTasks();
+                current = current ?? new HttpTransferTasksImpl();
 #endif
                 return current;
             }

@@ -40,6 +40,7 @@
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -61,6 +62,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\Plugin.HttpTransferTasks.Shared\Plugin.HttpTransferTasks.Shared.projitems" Label="Shared" />
+  <Import Project="..\Plugin.HttpTransferTasks.Http.Shared\Plugin.HttpTransferTasks.Http.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

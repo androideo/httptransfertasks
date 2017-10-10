@@ -40,6 +40,19 @@ namespace Plugin.HttpTransferTasks
         });
 
 
+        public override void Start()
+        {
+            //this.Status = TaskStatus.Started;
+        }
+
+
+        public override void Pause()
+        {
+            //this.Status = TaskStatus.PausedByUser;
+
+        }
+
+
         public override void Cancel()
         {
             this.Status = TaskStatus.Cancelled;

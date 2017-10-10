@@ -6,9 +6,9 @@ using Windows.Storage;
 
 namespace Plugin.HttpTransferTasks
 {
-    public class HttpTransferTasks : AbstractHttpTransferTasks
+    public class HttpTransferTasksImpl : AbstractHttpTransferTasks
     {
-        public HttpTransferTasks()
+        public HttpTransferTasksImpl()
         {
             BackgroundUploader
                 .GetCurrentUploadsAsync()

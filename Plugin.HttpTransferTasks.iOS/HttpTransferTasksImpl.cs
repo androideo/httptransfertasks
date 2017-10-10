@@ -5,14 +5,14 @@ using Foundation;
 
 namespace Plugin.HttpTransferTasks
 {
-    public class HttpTransferTasks : AbstractHttpTransferTasks
+    public class HttpTransferTasksImpl : AbstractHttpTransferTasks
     {
         readonly PluginSessionDelegate sessionDelegate;
         readonly NSUrlSessionConfiguration sessionConfig;
         readonly NSUrlSession session;
 
 
-        public HttpTransferTasks()
+        public HttpTransferTasksImpl()
         {
             this.sessionDelegate = new PluginSessionDelegate();
             this.sessionConfig = NSUrlSessionConfiguration.CreateBackgroundSessionConfiguration(NSBundle.MainBundle.BundleIdentifier + ".BackgroundTransferSession");
