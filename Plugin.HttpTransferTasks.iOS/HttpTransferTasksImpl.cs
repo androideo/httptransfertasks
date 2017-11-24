@@ -45,7 +45,6 @@ namespace Plugin.HttpTransferTasks
             var native = this.session.CreateUploadTask(request, NSUrl.FromFilename(config.LocalFilePath));
             var task = new HttpTask(config, native);
             this.Add(task);
-            native.Resume();
 
             return task;
         }
@@ -57,7 +56,6 @@ namespace Plugin.HttpTransferTasks
             var native = this.session.CreateDownloadTask(request);
             var task = new HttpTask(config, native);
             this.Add(task);
-            native.Resume();
 
             return task;
         }

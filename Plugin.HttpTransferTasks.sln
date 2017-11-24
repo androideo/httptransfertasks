@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.HttpTransferTasks", "Plugin.HttpTransferTasks\Plugin.HttpTransferTasks.csproj", "{DA481A2A-2AD7-4FA7-BFB0-E54E4F0E453B}"
 EndProject
@@ -47,6 +47,7 @@ Global
 		Plugin.HttpTransferTasks.Shared\Plugin.HttpTransferTasks.Shared.projitems*{796ce5eb-4f1f-4f32-a1df-e32dfccddaed}*SharedItemsImports = 4
 		Plugin.HttpTransferTasks.Http.Shared\Plugin.HttpTransferTasks.Http.Shared.projitems*{d843f7c4-97cc-4286-b413-3d8ad2c8a4c6}*SharedItemsImports = 13
 		Plugin.HttpTransferTasks.Shared\Plugin.HttpTransferTasks.Shared.projitems*{da481a2a-2ad7-4fa7-bfb0-e54e4f0e453b}*SharedItemsImports = 4
+		Plugin.HttpTransferTasks.Shared\Plugin.HttpTransferTasks.Shared.projitems*{dec5182e-9fdd-45cc-9cf7-a4c4f64a38b7}*SharedItemsImports = 4
 		Plugin.HttpTransferTasks.Shared\Plugin.HttpTransferTasks.Shared.projitems*{ea4d71eb-60b5-4dab-94a3-9a1e6a8786ed}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

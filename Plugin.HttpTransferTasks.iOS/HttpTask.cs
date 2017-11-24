@@ -18,13 +18,14 @@ namespace Plugin.HttpTransferTasks
 
         public override void Start()
         {
+            this.task.Resume();
         }
 
 
         public override void Pause()
         {
             this.Status = TaskStatus.Paused;
-
+            this.task.Suspend();
         }
 
 

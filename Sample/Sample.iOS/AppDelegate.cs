@@ -13,7 +13,6 @@ namespace Sample.iOS
         {
             Forms.Init();
             this.LoadApplication(new App());
-            new Acr.XamForms.ListView(); // fix linker
 
             return base.FinishedLaunching(app, options);
         }

@@ -8,15 +8,21 @@ namespace Plugin.HttpTransferTasks
     public class UploadHttpTask : AbstractUwpHttpTask
     {
         readonly UploadOperation operation;
+        readonly bool restart;
 
 
         public UploadHttpTask(TaskConfiguration config, UploadOperation operation, bool restart) : base(config, true)
         {
             this.operation = operation;
+            this.restart = restart;
             this.Identifier = operation.Guid.ToString();
             this.LocalFilePath = operation.SourceFile.ToString();
+        }
 
-            var task = restart ? this.operation.AttachAsync() : this.operation.StartAsync();
+
+        public override void Start()
+        {
+            var task = this.restart ? this.operation.AttachAsync() : this.operation.StartAsync();
             task.AsTask(
                 CancellationToken.None,
                 new Progress<UploadOperation>(x => this.SetData(
@@ -24,8 +30,13 @@ namespace Plugin.HttpTransferTasks
                     x.Progress.BytesSent,
                     x.Progress.TotalBytesToSend,
                     x.Progress.HasRestarted
-                )
-            ));
+                ))
+            );
+        }
+
+        public override void Pause()
+        {
+
         }
 
 
