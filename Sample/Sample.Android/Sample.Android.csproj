@@ -46,6 +46,7 @@
     <EnableLLVM>False</EnableLLVM>
     <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
     <EnableProguard>False</EnableProguard>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -225,9 +226,9 @@
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Plugin.HttpTransferTasks.Abstractions\Plugin.HttpTransferTasks.Abstractions.csproj">
-      <Project>{d3141f6b-355a-4f19-b9d7-bca7d2cafaca}</Project>
-      <Name>Plugin.HttpTransferTasks.Abstractions</Name>
+    <ProjectReference Include="..\..\Plugin.HttpTransferTasks\Plugin.HttpTransferTasks.csproj">
+      <Project>{da481a2a-2ad7-4fa7-bfb0-e54e4f0e453b}</Project>
+      <Name>Plugin.HttpTransferTasks</Name>
     </ProjectReference>
     <ProjectReference Include="..\Sample\Sample.csproj">
       <Project>{6A3D687F-5E31-4A8F-932A-73B8754F7E51}</Project>

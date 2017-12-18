@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Plugin.HttpTransferTasks.Abstractions\Plugin.HttpTransferTasks.Abstractions.csproj" />
+      <ProjectReference Include="..\..\Plugin.HttpTransferTasks.Rx\Plugin.HttpTransferTasks.Rx.csproj" />
       <ProjectReference Include="..\..\Plugin.HttpTransferTasks\Plugin.HttpTransferTasks.csproj" />
     </ItemGroup>
 

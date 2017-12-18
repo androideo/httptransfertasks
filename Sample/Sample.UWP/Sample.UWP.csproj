@@ -148,13 +148,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Plugin.HttpTransferTasks.Abstractions\Plugin.HttpTransferTasks.Abstractions.csproj">
-      <Project>{d3141f6b-355a-4f19-b9d7-bca7d2cafaca}</Project>
-      <Name>Plugin.HttpTransferTasks.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Plugin.HttpTransferTasks.Uwp\Plugin.HttpTransferTasks.Uwp.csproj">
-      <Project>{dec5182e-9fdd-45cc-9cf7-a4c4f64a38b7}</Project>
-      <Name>Plugin.HttpTransferTasks.Uwp</Name>
+    <ProjectReference Include="..\..\Plugin.HttpTransferTasks\Plugin.HttpTransferTasks.csproj">
+      <Project>{da481a2a-2ad7-4fa7-bfb0-e54e4f0e453b}</Project>
+      <Name>Plugin.HttpTransferTasks</Name>
     </ProjectReference>
     <ProjectReference Include="..\Sample\Sample.csproj">
       <Project>{d0891f9a-f987-42e2-9711-f8145571a842}</Project>
