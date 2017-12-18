@@ -46,10 +46,7 @@ namespace Sample.UWP
         }
 
 
-        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
-            => throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
-
-
+        void OnNavigationFailed(object sender, NavigationFailedEventArgs e) => throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         void OnSuspending(object sender, SuspendingEventArgs e) => e.SuspendingOperation.GetDeferral().Complete();
     }
 }

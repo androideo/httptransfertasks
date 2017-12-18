@@ -19,10 +19,18 @@ namespace Plugin.HttpTransferTasks.Rx
             task.WhenPropertyChanged(x => x.Status);
 
 
-        public static IObservable<Unit> WhenCompleted(this IHttpTask task) => task
+        public static IObservable<string> WhenCompleted(this IHttpTask task) => task
             .WhenStatusChanged()
             .Where(x => x == TaskStatus.Completed)
-            .Select(_ => Unit.Default);
+            .Select(_ => task.LocalFilePath);
+
+
+        public static IObservable<TaskListEventArgs> WhenListChanged(this IHttpTransferTasks tasks) => Observable.Create<TaskListEventArgs>(ob =>
+        {
+            var handler = new EventHandler<TaskListEventArgs>((sender, args) => ob.OnNext(args));
+            tasks.CurrentTasksChanged += handler;
+            return () => tasks.CurrentTasksChanged -= handler;
+        });
 
 
         public static IObservable<TRet> WhenPropertyChanged<TSender, TRet>(this TSender This, Expression<Func<TSender, TRet>> expression) where TSender : INotifyPropertyChanged

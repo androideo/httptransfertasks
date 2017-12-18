@@ -2,10 +2,10 @@
 using System.ComponentModel;
 using System.Reactive.Linq;
 using System.Windows.Input;
-using Acr;
 using Acr.UserDialogs;
 using Humanizer;
 using Plugin.HttpTransferTasks;
+using Plugin.HttpTransferTasks.Rx;
 using Xamarin.Forms;
 
 
@@ -15,36 +15,81 @@ namespace Sample
     {
         readonly IHttpTask task;
         IDisposable taskSub;
+        IDisposable statusSub;
 
 
         public HttpTaskViewModel(IHttpTask task)
         {
             this.task = task;
+
             this.Cancel = new Command(task.Cancel);
-            this.MoreInfo = new Command(() =>
+            this.Actions = new Command(() =>
             {
-                if (task.Status == TaskStatus.Error)
-                    UserDialogs.Instance.Alert(task.Exception.ToString(), "Error");
+                switch (task.Status)
+                {
+                    case TaskStatus.Completed:
+                        // TODO: need completion time
+                        //task.StartTime
+                        var msg = task.IsUpload ? "Upload Completed" : "Download Completed";
+                        UserDialogs.Instance.Alert(msg, "COMPLETED");
+                        break;
+
+                    case TaskStatus.Paused:
+                        task.Start();
+                        break;
+
+                    case TaskStatus.PausedByCostedNetwork:
+                        UserDialogs.Instance.Alert("Paused due to costed network", "Error");
+                        break;
+
+                    case TaskStatus.PausedByNoNetwork:
+                        UserDialogs.Instance.Alert("Paused due to no network", "Error");
+                        break;
+
+                    case TaskStatus.Running:
+                    case TaskStatus.Resumed:
+                    case TaskStatus.Retrying:
+                        task.Pause();
+                        break;
+
+                    case TaskStatus.Error:
+                        UserDialogs.Instance.Alert(task.Exception.ToString(), "Error");
+                        break;
+
+                    default:
+                        UserDialogs.Instance.Alert("Unknown status", "Error");
+                        break;
+                }
             });
         }
 
 
-        public override void OnActivate() => this.taskSub = Observable
-            .Create<IHttpTask>(ob =>
-            {
-                var handler = new PropertyChangedEventHandler((sender, args) => ob.OnNext(this.task));
-                this.task.PropertyChanged += handler;
-                return () => this.task.PropertyChanged -= handler;
-            })
-            .Sample(TimeSpan.FromSeconds(1))
-            .Subscribe(x =>
-                Device.BeginInvokeOnMainThread(() => this.OnPropertyChanged(String.Empty))
-            );
+        public override void OnActivate()
+        {
+            this.taskSub = this.task
+                .WhenDataChanged()
+                .Sample(TimeSpan.FromSeconds(1))
+                .Subscribe(x =>
+                    Device.BeginInvokeOnMainThread(() => this.OnPropertyChanged(String.Empty))
+                );
+
+            this.statusSub = this.task
+                .WhenStatusChanged()
+                .Subscribe(x =>
+                    Device.BeginInvokeOnMainThread(() => this.OnPropertyChanged(nameof(Status)))
+                );
+        }
 
 
-        public override void OnDeactivate() => this.taskSub?.Dispose();
+        public override void OnDeactivate()
+        {
+            this.taskSub?.Dispose();
+            this.statusSub?.Dispose();
+        }
 
 
+        public ICommand Actions { get; }
+        public ICommand Cancel { get; }
         public string Identifier => this.task.Identifier;
         public bool IsUpload => this.task.IsUpload;
         public TaskStatus Status => this.task.Status;
@@ -53,8 +98,6 @@ namespace Sample
         public string TransferSpeed => Math.Round(this.task.BytesPerSecond.Bytes().Kilobytes, 2) + " Kb/s";
         public string EstimateMinsRemaining => Math.Round(this.task.EstimatedCompletionTime.TotalMinutes, 1) + " min(s)";
 
-        public ICommand Cancel { get; }
-        public ICommand MoreInfo { get; }
 
         protected virtual void OnTaskPropertyChanged(object sender, PropertyChangedEventArgs args)
             => Device.BeginInvokeOnMainThread(() => this.OnPropertyChanged(String.Empty));

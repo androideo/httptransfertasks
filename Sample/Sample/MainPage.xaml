@@ -42,6 +42,9 @@
 
                             <ViewCell.View>
                                 <Grid Padding="4">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Actions}" />
+                                    </Grid.GestureRecognizers>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*" />
                                         <ColumnDefinition Width="1*" />
