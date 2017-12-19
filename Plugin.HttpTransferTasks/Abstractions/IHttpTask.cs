@@ -21,6 +21,7 @@ namespace Plugin.HttpTransferTasks
         double BytesPerSecond { get; }
         TimeSpan EstimatedCompletionTime { get; }
         DateTimeOffset StartTime { get; }
+        // TODO: DateTimeOffset? FinishTime { get; }
 
         Exception Exception { get; }
 

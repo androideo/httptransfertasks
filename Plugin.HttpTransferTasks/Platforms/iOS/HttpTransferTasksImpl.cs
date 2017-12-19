@@ -11,7 +11,7 @@ namespace Plugin.HttpTransferTasks
         readonly NSUrlSessionConfiguration sessionConfig;
         readonly NSUrlSession session;
 
-
+            //'NSUrlSession.FromConfiguration(NSUrlSessionConfiguration, NSUrlSessionDelegate, NSOperationQueue)' is obsolete: 'Use the overload with a 'INSUrlSessionDelegate' parameter.
         public HttpTransferTasksImpl()
         {
             this.sessionDelegate = new PluginSessionDelegate();

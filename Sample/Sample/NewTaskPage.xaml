@@ -22,6 +22,9 @@
                 <Label Text="Is Upload" />
                 <Switch IsToggled="{Binding IsUpload}" />
 
+                <Label Text="Auto Start" />
+                <Switch IsToggled="{Binding AutoStart}" />
+
                 <Button Text="Save Task" Command="{Binding Save}" />
             </StackLayout>
         </ScrollView>
