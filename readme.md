@@ -1,4 +1,4 @@
-# ACR HTTP Transfers Plugin for Xamarin and Windows
+#  <img src="icon.png" width="71" height="71"/> ACR HTTP Transfers Plugin for Xamarin and Windows
 Cross platform HTTP download/upload manager
 
 [![NuGet](https://img.shields.io/nuget/v/Plugin.HttpTransferTasks.svg?maxAge=2592000)](https://www.nuget.org/packages/Plugin.HttpTransferTasks/)
@@ -59,3 +59,7 @@ task.PropertyChanged += (sender, args) =>
 };
 
 ```
+
+## Contributors
+
+* **[Jelle Damen](https://twitter.com/JelleDamen)** for the wonderful icons

@@ -5,7 +5,11 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Allan Ritchie</Authors>
     <Company />
-    <Product />
+    <Product>ACR HTTP Transfer Tasks - RX Extensions</Product>
+    <PackageIconUrl>https://github.com/aritchie/httptransfertasks/raw/master/icon.png</PackageIconUrl>
+    <Description>Reactive Extension (RX) addons for ACR HTTP Transfer Tasks</Description>
+    <PackageProjectUrl>https://github.com/aritchie/httptransfertasks</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/aritchie/httptransfertasks/blob/master/LICENSE.md</PackageLicenseUrl>
   </PropertyGroup>
 
   <ItemGroup>

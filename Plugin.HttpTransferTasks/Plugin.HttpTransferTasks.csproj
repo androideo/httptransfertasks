@@ -7,7 +7,7 @@
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>Allan Ritchie</Authors>
-        <PackageTags>ios android uwp windows xamarin background http transfer</PackageTags>
+        <PackageTags>ios android uwp windows xamarin background http upload download</PackageTags>
         <PackageLicenseUrl>https://github.com/aritchie/httptransfertasks/blob/master/LICENSE.md</PackageLicenseUrl>
         <PackageProjectUrl>https://github.com/aritchie/httptransfertasks</PackageProjectUrl>
         <PackageReleaseNotes>2.0.0
@@ -15,6 +15,7 @@
 
 1.0.0
 Initial Release</PackageReleaseNotes>
+        <PackageIconUrl>https://github.com/aritchie/httptransfertasks/raw/master/icon.png</PackageIconUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
