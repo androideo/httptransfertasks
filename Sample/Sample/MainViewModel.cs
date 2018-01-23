@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Reactive.Linq;
 using System.Windows.Input;
 using Plugin.HttpTransferTasks;
-using Plugin.HttpTransferTasks.Rx;
 using Xamarin.Forms;
 
 
@@ -19,13 +17,15 @@ namespace Sample
             this.CancelAll = new Command(CrossHttpTransfers.Current.CancelAll);
             this.Tasks = new ObservableCollection<HttpTaskViewModel>();
 
-            CrossHttpTransfers
-                .Current
-                .WhenListChanged()
-                .Where(x => x.Change == TaskListChange.Add)
-                .Subscribe(x => Device.BeginInvokeOnMainThread(() =>
-                    this.Tasks.Insert(0, new HttpTaskViewModel(x.Task)))
-                );
+            CrossHttpTransfers.Current.CurrentTasksChanged += (sender, args) =>
+            {
+                if (args.Change == TaskListChange.Add)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                        this.Tasks.Insert(0, new HttpTaskViewModel(args.Task))
+                    );
+                }
+            };
         }
 
 

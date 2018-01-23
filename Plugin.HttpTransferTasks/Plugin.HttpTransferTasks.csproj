@@ -11,7 +11,8 @@
         <PackageLicenseUrl>https://github.com/aritchie/httptransfertasks/blob/master/LICENSE.md</PackageLicenseUrl>
         <PackageProjectUrl>https://github.com/aritchie/httptransfertasks</PackageProjectUrl>
         <PackageReleaseNotes>2.0.0
-
+[feature] .NET Standard 2!
+[feature] Ability to Start/Pause/Cancel
 
 1.0.0
 Initial Release</PackageReleaseNotes>
@@ -33,7 +34,7 @@ Initial Release</PackageReleaseNotes>
         <Product>Plugin.HttpTransferTasks - iOS</Product>
     </PropertyGroup>
 
-    <PropertyGroup Condition=" '$(TargetFramework)' == 'net46' ">
+    <PropertyGroup Condition=" '$(TargetFramework)' == 'net47' ">
         <DefineConstants>$(DefineConstants);__NETFX__</DefineConstants>
         <Product>Plugin.HttpTransferTasks - .NET Framework</Product>
     </PropertyGroup>

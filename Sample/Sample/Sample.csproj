@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Acr.Core" Version="1.1.0" />
       <PackageReference Include="Acr.UserDialogs" Version="7.0.0-beta3" />
       <PackageReference Include="Humanizer" Version="2.2.0" />
       <PackageReference Include="Plugin.Notifications" Version="5.0.0-beta1" />
@@ -14,7 +15,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Plugin.HttpTransferTasks.Rx\Plugin.HttpTransferTasks.Rx.csproj" />
       <ProjectReference Include="..\..\Plugin.HttpTransferTasks\Plugin.HttpTransferTasks.csproj" />
     </ItemGroup>
 

@@ -2,10 +2,10 @@
 using System.ComponentModel;
 using System.Reactive.Linq;
 using System.Windows.Input;
+using Acr;
 using Acr.UserDialogs;
 using Humanizer;
 using Plugin.HttpTransferTasks;
-using Plugin.HttpTransferTasks.Rx;
 using Xamarin.Forms;
 
 
@@ -67,14 +67,14 @@ namespace Sample
         public override void OnActivate()
         {
             this.taskSub = this.task
-                .WhenDataChanged()
+                .WhenAnyPropertyChanged()
                 .Sample(TimeSpan.FromSeconds(1))
                 .Subscribe(x =>
                     Device.BeginInvokeOnMainThread(() => this.OnPropertyChanged(String.Empty))
                 );
 
             this.statusSub = this.task
-                .WhenStatusChanged()
+                .WhenAnyValue(x => x.Status)
                 .Subscribe(x =>
                     Device.BeginInvokeOnMainThread(() => this.OnPropertyChanged(nameof(Status)))
                 );
