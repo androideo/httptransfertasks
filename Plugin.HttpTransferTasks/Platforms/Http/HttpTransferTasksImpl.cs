@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Plugin.HttpTransferTasks.Infrastructure;
 using Plugin.HttpTransferTasks.Models;
 #if __ANDROID__
 using Android.App;

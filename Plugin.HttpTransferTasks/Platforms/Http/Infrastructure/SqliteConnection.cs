@@ -3,7 +3,7 @@ using System.IO;
 using Plugin.HttpTransferTasks.Models;
 using SQLite;
 
-namespace Plugin.HttpTransferTasks
+namespace Plugin.HttpTransferTasks.Infrastructure
 {
     public class SqliteConnection : SQLiteConnection
     {

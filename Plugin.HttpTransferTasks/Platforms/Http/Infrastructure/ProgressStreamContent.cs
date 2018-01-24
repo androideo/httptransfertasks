@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 
 
-namespace Plugin.HttpTransferTasks
+namespace Plugin.HttpTransferTasks.Infrastructure
 {
     public class ProgressStreamContent : HttpContent
     {

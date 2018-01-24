@@ -10,10 +10,10 @@ namespace Plugin.HttpTransferTasks
         IReadOnlyList<IHttpTask> CurrentTasks { get; }
         event EventHandler<TaskListEventArgs> CurrentTasksChanged;
 
-        IHttpTask Upload(string uri, string localFilePath = null, bool useMeteredConnection = false);
+        IHttpTask Upload(string uri, string localFilePath = null, bool autoStart = true, bool useMeteredConnection = false);
         IHttpTask Upload(TaskConfiguration config);
 
-        IHttpTask Download(string uri, bool useMeteredConnection = false);
+        IHttpTask Download(string uri, bool autoStart = true, bool useMeteredConnection = false);
         //IHttpTask Download(string uri, string localFilePathWhereToSave = null, bool useMeteredConnection = false);
         IHttpTask Download(TaskConfiguration config);
 

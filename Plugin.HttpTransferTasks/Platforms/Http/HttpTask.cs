@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using Plugin.HttpTransferTasks.Infrastructure;
 
 
 namespace Plugin.HttpTransferTasks
@@ -42,13 +43,13 @@ namespace Plugin.HttpTransferTasks
 
         public override void Start()
         {
-            //this.Status = TaskStatus.Started;
+            this.Status = TaskStatus.Running;
         }
 
 
         public override void Pause()
         {
-            //this.Status = TaskStatus.PausedByUser;
+            this.Status = TaskStatus.Paused;
 
         }
 

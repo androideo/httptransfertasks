@@ -23,6 +23,7 @@ namespace Plugin.HttpTransferTasks
         public string Uri { get; }
         public string LocalFilePath { get; set; }
         public bool UseMeteredConnection { get; set; }
+        public bool AutoStart { get; set; } = true;
         public string HttpMethod { get; set; } = "GET";
         public string PostData { get; set; }
         public IDictionary<string, string> Headers { get; set; } = new Dictionary<string, string>();

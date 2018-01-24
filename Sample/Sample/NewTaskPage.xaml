@@ -25,6 +25,9 @@
                 <Label Text="Auto Start" />
                 <Switch IsToggled="{Binding AutoStart}" />
 
+                <Label Text="Use Metered Connection" />
+                <Switch IsToggled="{Binding UseMeteredConnection}" />
+
                 <Button Text="Save Task" Command="{Binding Save}" />
             </StackLayout>
         </ScrollView>

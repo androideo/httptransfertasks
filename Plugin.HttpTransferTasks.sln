@@ -23,8 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.UWP", "Sample\Sample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.iOS", "Sample\Sample.iOS\Sample.iOS.csproj", "{019BA7FB-C5AB-44EC-8EED-99C37CA2B8BB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{134068EF-4129-4774-A5F8-DF6866DFE09D}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Plugin.HttpTransferTasks.Shared\Plugin.HttpTransferTasks.Shared.projitems*{da481a2a-2ad7-4fa7-bfb0-e54e4f0e453b}*SharedItemsImports = 4
@@ -303,7 +301,6 @@ Global
 		{019BA7FB-C5AB-44EC-8EED-99C37CA2B8BB}.AppStore|x64.ActiveCfg = AppStore|iPhone
 		{019BA7FB-C5AB-44EC-8EED-99C37CA2B8BB}.AppStore|x86.ActiveCfg = AppStore|iPhone
 		{019BA7FB-C5AB-44EC-8EED-99C37CA2B8BB}.Debug|Any CPU.ActiveCfg = Debug|iPhone
-		{019BA7FB-C5AB-44EC-8EED-99C37CA2B8BB}.Debug|Any CPU.Build.0 = Debug|iPhone
 		{019BA7FB-C5AB-44EC-8EED-99C37CA2B8BB}.Debug|ARM.ActiveCfg = Debug|iPhone
 		{019BA7FB-C5AB-44EC-8EED-99C37CA2B8BB}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{019BA7FB-C5AB-44EC-8EED-99C37CA2B8BB}.Debug|iPhone.Build.0 = Debug|iPhone
@@ -322,9 +319,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{DA481A2A-2AD7-4FA7-BFB0-E54E4F0E453B} = {134068EF-4129-4774-A5F8-DF6866DFE09D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A0910E35-5D5D-4178-81BD-44C330BE8FD5}

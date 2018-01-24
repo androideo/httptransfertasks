@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using Windows.Foundation;
 using Windows.Networking.BackgroundTransfer;
 
 
@@ -7,6 +8,7 @@ namespace Plugin.HttpTransferTasks
 {
     public class DownloadHttpTask : AbstractUwpHttpTask
     {
+        IAsyncOperationWithProgress<DownloadOperation, DownloadOperation> task;
         readonly DownloadOperation operation;
         readonly bool restart;
 
@@ -43,17 +45,34 @@ namespace Plugin.HttpTransferTasks
         public override void Start()
         {
             //this.operation.Resume();
-            var task = this.restart ? this.operation.AttachAsync() : this.operation.StartAsync();
-            task.AsTask(
-                CancellationToken.None,
-                new Progress<DownloadOperation>(x => this.SetData(
-                        x.Progress.Status,
-                        x.Progress.BytesReceived,
-                        x.Progress.TotalBytesToReceive,
-                        x.Progress.HasRestarted
-                    )
-                )
+            this.task = this.restart ? this.operation.AttachAsync() : this.operation.StartAsync();
+            this.task.Progress = (result, progress) => this.SetData(
+                progress.Progress.Status,
+                progress.Progress.BytesReceived,
+                progress.Progress.TotalBytesToReceive,
+                progress.Progress.HasRestarted
             );
+            this.task.Completed = (op1, op2) =>
+            {
+                switch (op2)
+                {
+                    case AsyncStatus.Canceled:
+                        this.Status = TaskStatus.Cancelled;
+                        break;
+
+                    case AsyncStatus.Completed:
+                        this.Status = TaskStatus.Completed;
+                        break;
+
+                    case AsyncStatus.Error:
+                        this.Status = TaskStatus.Error;
+                        break;
+
+                    case AsyncStatus.Started:
+                        this.Status = TaskStatus.Running;
+                        break;
+                }
+            };
         }
 
 

@@ -69,6 +69,8 @@ namespace Plugin.HttpTransferTasks
             var operation = task.CreateUpload(new Uri(config.Uri), file);
             var httpTask = new UploadHttpTask(config, operation, false);
             this.Add(httpTask);
+            if (config.AutoStart)
+                httpTask.Start();
 
             return httpTask;
         }
@@ -97,6 +99,8 @@ namespace Plugin.HttpTransferTasks
             var operation = task.CreateDownload(new Uri(config.Uri), file);
             var httpTask = new DownloadHttpTask(config, operation, false);
             this.Add(httpTask);
+            if (config.AutoStart)
+                httpTask.Start();
 
             return httpTask;
         }

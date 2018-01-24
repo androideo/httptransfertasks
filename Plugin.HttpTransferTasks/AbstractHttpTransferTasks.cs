@@ -13,16 +13,18 @@ namespace Plugin.HttpTransferTasks
         readonly IDictionary<string, IHttpTask> currentTasks = new Dictionary<string, IHttpTask>();
 
 
-        public virtual IHttpTask Upload(string uri, string localFilePath, bool useMeteredConnection = false)
+        public virtual IHttpTask Upload(string uri, string localFilePath, bool autoStart = true, bool useMeteredConnection = false)
             => this.Upload(new TaskConfiguration(uri, localFilePath)
             {
+                AutoStart = autoStart,
                 UseMeteredConnection = useMeteredConnection
             });
 
 
-        public virtual IHttpTask Download(string uri, bool useMeteredConnection = false)
+        public virtual IHttpTask Download(string uri, bool autoStart = true, bool useMeteredConnection = false)
             => this.Download(new TaskConfiguration(uri)
             {
+                AutoStart = autoStart,
                 UseMeteredConnection = useMeteredConnection
             });
 

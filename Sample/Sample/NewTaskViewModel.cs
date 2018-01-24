@@ -27,12 +27,10 @@ namespace Sample
 	                    this.LocalFilePath = "You must enter the file to upload";
 	                }
 
-	                var task = this.IsUpload
-	                    ? CrossHttpTransfers.Current.Upload(this.Url, this.LocalFilePath)
-	                    : CrossHttpTransfers.Current.Download(this.Url);
-
-                    if (this.AutoStart)
-                        task.Start();
+	                if (this.IsUpload)
+	                    CrossHttpTransfers.Current.Upload(this.Url, this.LocalFilePath, this.AutoStart);
+                    else
+	                    CrossHttpTransfers.Current.Download(this.Url, this.AutoStart);
 
 	                if (String.IsNullOrWhiteSpace(this.ErrorMessage))
 	                    await App.Current.MainPage.Navigation.PopAsync(true);
@@ -82,6 +80,14 @@ namespace Sample
         {
             get => this.autoStart;
             set => this.SetProperty(ref this.autoStart, value);
+        }
+
+
+        bool useMeteredConnection = false;
+        public bool UseMeteredConnection
+        {
+            get => this.useMeteredConnection;
+            set => this.SetProperty(ref this.useMeteredConnection, value);
         }
 
 
